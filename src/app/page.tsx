@@ -1,103 +1,138 @@
-import Image from "next/image";
+"use client";
+import Link from "next/link";
+
+type Article = {
+  title: string;
+  url: string;
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const articles: Article[] = [
+    {
+      title: "Rapport - tp-1",
+      url: "/tp-1",
+    },
+    {
+      title: "Rapport - tp-2",
+      url: "/tp-2",
+    },
+    {
+      title: " Root.me - HtmlCanStopYou",
+      url: "/html-can-stop-you",
+    },
+    {
+      title: "Root.me - Javascript Authentification",
+      url: "/javascript-authentification",
+    },
+    {
+      title: "Root.me - Javascript Native",
+      url: "/javascript-native",
+    },
+    {
+      title: "Root.me - Javascript Source",
+      url: "/javascript-source",
+    },
+    {
+      title: "Root.me - Authentification",
+      url: "/authentification",
+    },
+    {
+      title: "Root.me - Obfuscation 1",
+      url: "/obfuscation-1",
+    },
+    {
+      title: "Root.me - Obfuscation 2",
+      url: "/obfuscation-2",
+    },
+    {
+      title: "Root.me - Webpack",
+      url: "/webpack",
+    },
+    {
+      title: "Attaque - Solarwinds",
+      url: "/solarwinds",
+    },
+    {
+      title: "Attaque - Wannacry",
+      url: "/wannacry",
+    },
+    {
+      title: "Attaque - Target (2013)",
+      url: "/target-2013",
+    },
+    {
+      title: "Attaque - Log4Shell",
+      url: "/log4shell",
+    },
+    {
+      title: "Attaque - NotPetya",
+      url: "/notpetya",
+    },
+    {
+      title: "Groups - ATP28(FancyBear)",
+      url: "/fancy-bear",
+    },
+    {
+      title: "Groups - $Lapsus",
+      url: "/lapsus",
+    },
+    {
+      title: "Groups - Lazarus Group",
+      url: "/lazarus-group",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  return (
+    <>
+      <main className="min-h-screen bg-gray-100 text-gray-800">
+        <header className="bg-white shadow">
+          <div className="max-w-4xl mx-auto px-4 py-6">
+            <h1 className="text-3xl font-bold">
+              Mon Blog Cyber - Louan FLAMAIN
+            </h1>
+          </div>
+        </header>
+
+        <section className="max-w-4xl mx-auto px-4 py-6">
+          <article className="bg-white rounded-xl shadow p-6 mb-6 scale-105">
+            <h2 className="text-2xl font-semibold">Lien des annexes</h2>
+            <p className="text-sm mt-2 flex flex-col gap-3 text-blue-400">
+              <Link
+                className="hover:underline"
+                href="https://docs.google.com/spreadsheets/d/1kpLEOa0nsPSjY3GmCmJDFjDooo5bU4j9HLnhy7hqImo/edit?usp=sharing"
+              >
+                Speadsheet Attaques
+              </Link>
+              <Link
+                className="hover:underline"
+                href="https://docs.google.com/spreadsheets/d/1Kr2Iz_iPr_y4h__SgpIBqrOBG03Kw4kjDTYoi68Bp0c/edit?usp=sharing"
+              >
+                Speadsheet Root.me
+              </Link>
+            </p>
+          </article>
+          {articles.map((article, index) => (
+            <Link key={index} href={`/article/${article.url}`}>
+              <article className="bg-white rounded-xl shadow p-6 mb-6 hover:shadow-md transition cursor-pointer scale-105 duration-75 relative">
+                <h2 className="text-2xl font-semibold">{article.title}</h2>
+                <p className="text-sm text-gray-400 mt-2">
+                  Créé le{" "}
+                  {new Date().toLocaleDateString("fr-FR", {
+                    weekday: "long", // jeudi
+                    year: "numeric", // 2025
+                    month: "long", // juillet
+                    day: "numeric", // 3
+                  })}
+                </p>
+              </article>
+            </Link>
+          ))}
+        </section>
+
+        <footer className="text-center text-gray-500 text-sm py-6">
+          © {new Date().getFullYear()} Mon Blog.
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
